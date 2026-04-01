@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<!--
+Assumptions used consistently in this build:
+- Published business name: PULSE Advisory Group.
+- Primary CTA wording: Request a triage call.
+- Contact email: jen@prismqd.ai.
+- Phone number omitted by instruction.
+- Web address is not yet final; site is intended for GitHub deployment first, then transfer to hosted domain.
+- Form endpoint: https://formspree.io/f/mdapdwaq.
+- Pricing shown because user authorized best-practice boutique positioning; fees are based on provided source materials and presented as starting scope indicators.
+- No client logos, testimonials, certifications, or regulatory endorsements are shown because none were confirmed.
+- Joppy matter is referenced only as an initial pro bono matter in general terms; no unsupported outcome attribution is made.
+- Legal/privacy language uses conservative medical-legal consulting boilerplate and does not constitute legal advice.
+-->
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PULSE Advisory Group | Failure-to-Rescue and Systems Safety Advisory</title>
+  <meta name="description" content="PULSE Advisory Group provides independent failure-to-rescue, systems safety, culture, and product-risk analysis for attorneys, healthcare organizations, and healthtech founders." />
+  <meta name="theme-color" content="#0f1417" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --color-bg: #f5f3ee;
+      --color-surface: #fbfaf7;
+      --color-surface-2: #f1eee8;
+      --color-surface-offset: #e8e2d9;
+      --color-surface-dynamic: #ded7cd;
+      --color-divider: #d6cec2;
+      --color-border: rgba(27, 28, 31, 0.12);
+      --color-text: #16181b;
+      --color-text-muted: #5d646d;
+      --color-text-faint: #8b9198;
+      --color-text-inverse: #fbfaf7;
+      --color-primary: #103a46;
+      --color-primary-hover: #0c2d37;
+      --color-primary-active: #08232b;
+      --color-primary-highlight: rgba(16, 58, 70, 0.12);
+      --color-success: #2e6d4f;
+      --color-error: #8f2f4b;
+      --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+      --shadow-md: 0 10px 28px rgba(17, 24, 39, 0.08);
+      --shadow-lg: 0 18px 60px rgba(9, 16, 22, 0.14);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.125rem;
+      --radius-xl: 1.5rem;
+      --radius-full: 999px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --content-narrow: 42rem;
+      --content-default: 72rem;
+      --content-wide: 78rem;
+      --font-display: 'Zodiak', Georgia, serif;
+      --font-body: 'Satoshi', Inter, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #0f1417;
+      --color-surface: #151c21;
+      --color-surface-2: #1a2329;
+      --color-surface-offset: #223039;
+      --color-surface-dynamic: #293842;
+      --color-divider: #31424b;
+      --color-border: rgba(245, 243, 238, 0.12);
+      --color-text: #f4f2ee;
+      --color-text-muted: #bbc2c8;
+      --color-text-faint: #8b959d;
+      --color-text-inverse: #0f1417;
+      --color-primary: #8fbac4;
+      --color-primary-hover: #a8cad2;
+      --color-primary-active: #c5dbe0;
+      --color-primary-highlight: rgba(143, 186, 196, 0.14);
+      --color-success: #7ac09e;
+      --color-error: #d990a4;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.28);
+      --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.42);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme]) {
+        --color-bg: #0f1417;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -moz-text-size-adjust: none;
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+    body {
+      min-height: 100dvh;
+      line-height: 1.6;
+      font-family: var(--font-body, sans-serif);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top right, rgba(16, 58, 70, 0.07), transparent 28%),
+        linear-gradient(180deg, color-mix(in oklab, var(--color-bg) 92%, var(--color-surface) 8%) 0%, var(--color-bg) 100%);
+      overflow-x: hidden;
+    }
+    img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    p, li { text-wrap: pretty; }
+    h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; }
+    ::selection { background: rgba(16, 58, 70, 0.18); }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -3rem;
+      left: 1rem;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      z-index: 1000;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .container {
+      width: min(100% - 2rem, var(--content-wide));
+      margin-inline: auto;
+    }
+    .narrow { width: min(100% - 2rem, var(--content-narrow)); margin-inline: auto; }
+    .section {
+      padding-block: clamp(var(--space-12), 9vw, var(--space-24));
+      position: relative;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 0.45rem 0.8rem;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: color-mix(in oklab, var(--color-surface) 88%, var(--color-primary-highlight) 12%);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      opacity: 0.8;
+    }
+    .section-head {
+      display: grid;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+      max-width: 46rem;
+    }
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    .section-head p {
+      color: var(--color-text-muted);
+      max-width: 42rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: color-mix(in oklab, var(--color-bg) 82%, transparent 18%);
+      border-bottom: 1px solid color-mix(in oklab, var(--color-border) 100%, transparent 0%);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-height: 4.75rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-height: 44px;
+    }
+    .brand-mark {
+      width: 2.6rem;
+      height: 2.6rem;
+      color: var(--color-primary);
+      flex: 0 0 auto;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .brand-name {
+      font-size: var(--text-sm);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .brand-sub {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-wrap {
+      display: none;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+    .site-nav a,
+    .theme-toggle,
+    .header-cta {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+    }
+    .site-nav a {
+      padding: 0.65rem 0.95rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      background: var(--color-primary-highlight);
+      color: var(--color-text);
+    }
+    .theme-toggle {
+      width: 44px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .header-cta,
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.9rem 1.2rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: transform var(--transition-interactive), background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+    }
+    .header-cta,
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-cta:hover,
+    .btn-primary:hover,
+    .header-cta:focus-visible,
+    .btn-primary:focus-visible {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-secondary {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+    }
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: var(--color-surface-2);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding-top: clamp(var(--space-12), 12vw, var(--space-24));
+      padding-bottom: clamp(var(--space-12), 10vw, var(--space-20));
+    }
+    .hero-grid {
+      display: grid;
+      gap: var(--space-10);
+      align-items: start;
+    }
+    .hero-copy {
+      display: grid;
+      gap: var(--space-6);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.85rem, 6vw, 5.8rem);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      max-width: 14ch;
+    }
+    .hero-lead {
+      max-width: 42rem;
+      color: var(--color-text-muted);
+      font-size: var(--text-lg);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+    .hero-note {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .hero-panel {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--color-surface) 88%, var(--color-primary-highlight) 12%), var(--color-surface));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-6), 4vw, var(--space-10));
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: auto -18% -26% auto;
+      width: 14rem;
+      height: 14rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 58, 70, 0.14), transparent 68%);
+      pointer-events: none;
+    }
+    .signal-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .signal-grid h2 {
+      font-size: var(--text-xl);
+      font-family: var(--font-display);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    .signal-grid p { color: var(--color-text-muted); }
+    .signal-matrix {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+    .signal-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      background: color-mix(in oklab, var(--color-surface-2) 82%, transparent 18%);
+      display: grid;
+      gap: 0.45rem;
+    }
+    .signal-card strong { font-size: var(--text-sm); }
+    .signal-card span { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .stats-row {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .stat {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+    }
+    .stat strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-weight: 900;
+      margin-bottom: 0.2rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .panel-grid,
+    .stakes-grid,
+    .services-grid,
+    .process-grid,
+    .diff-grid,
+    .trust-grid,
+    .faq-grid,
+    .ops-grid,
+    .feedback-grid,
+    .footer-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-5), 3vw, var(--space-8));
+      box-shadow: var(--shadow-sm);
+    }
+    .card h3 {
+      font-size: var(--text-lg);
+      margin-bottom: 0.55rem;
+      line-height: 1.15;
+    }
+    .card p,
+    .card li,
+    .card dd {
+      color: var(--color-text-muted);
+    }
+
+    .compare-board {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .compare-col {
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-5), 3vw, var(--space-8));
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .compare-col.current {
+      background: color-mix(in oklab, var(--color-surface) 80%, var(--color-error) 4%);
+    }
+    .compare-col.future {
+      background: color-mix(in oklab, var(--color-surface) 82%, var(--color-primary-highlight) 18%);
+    }
+    .compare-col h3 {
+      margin-bottom: var(--space-4);
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    .compare-col ul {
+      list-style: none;
+      display: grid;
+      gap: var(--space-3);
+    }
+    .compare-col li {
+      padding-left: 1.25rem;
+      position: relative;
+      color: var(--color-text-muted);
+    }
+    .compare-col li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+    .compare-col.current li::before { background: var(--color-error); }
+
+    .stakes-grid .card,
+    .diff-grid .card,
+    .trust-grid .card,
+    .ops-grid .card,
+    .feedback-grid .card { height: 100%; }
+
+    .visual-frame {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .workflow-visual,
+    .architecture-visual {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      padding: clamp(var(--space-5), 3vw, var(--space-8));
+      box-shadow: var(--shadow-sm);
+    }
+    .flow-steps {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-3);
+      align-items: start;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: color-mix(in oklab, var(--color-surface-2) 85%, transparent 15%);
+      border: 1px solid var(--color-border);
+    }
+    .step-num {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-sm);
+      font-weight: 900;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      flex: 0 0 auto;
+      box-shadow: var(--shadow-sm);
+    }
+    .flow-step strong,
+    .architecture-node strong {
+      display: block;
+      margin-bottom: 0.15rem;
+      font-size: var(--text-sm);
+    }
+    .flow-step span,
+    .architecture-node span {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+    .architecture-grid {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .architecture-node {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--color-surface-2) 88%, var(--color-primary-highlight) 12%), var(--color-surface));
+      padding: var(--space-4);
+      position: relative;
+    }
+    .architecture-node::after {
+      content: "";
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.25rem;
+      height: 1px;
+      background: var(--color-divider);
+      display: none;
+    }
+
+    .service-card {
+      display: grid;
+      gap: var(--space-4);
+      align-content: start;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-5), 3vw, var(--space-8));
+      box-shadow: var(--shadow-sm);
+    }
+    .service-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+    .service-top h3 {
+      font-size: var(--text-lg);
+      max-width: 20ch;
+    }
+    .price {
+      font-size: var(--text-sm);
+      font-weight: 900;
+      white-space: nowrap;
+      padding: 0.5rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+    }
+    .service-card ul {
+      list-style: none;
+      display: grid;
+      gap: var(--space-2);
+    }
+    .service-card li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+    .service-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .mini-note {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .process-grid .card ol {
+      list-style: none;
+      display: grid;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    .process-grid .card li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-3);
+      align-items: start;
+    }
+
+    .quote-band {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+      background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary-highlight) 35%, var(--color-surface) 65%), var(--color-surface));
+      padding: clamp(var(--space-6), 4vw, var(--space-10));
+      display: grid;
+      gap: var(--space-4);
+    }
+    .quote-band blockquote {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      max-width: 28ch;
+    }
+
+    .cred-list,
+    .faq-list,
+    .ops-list,
+    .feedback-list {
+      display: grid;
+      gap: var(--space-3);
+      list-style: none;
+    }
+    .cred-list li,
+    .ops-list li,
+    .feedback-list li {
+      padding-left: 1rem;
+      position: relative;
+      color: var(--color-text-muted);
+    }
+    .cred-list li::before,
+    .ops-list li::before,
+    .feedback-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    details.faq-item {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      padding: var(--space-4) var(--space-5);
+      box-shadow: var(--shadow-sm);
+    }
+    details.faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-height: 44px;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      flex: 0 0 auto;
+    }
+    details[open].faq-item summary::after { content: "−"; }
+    .faq-answer {
+      padding-top: var(--space-3);
+      color: var(--color-text-muted);
+    }
+
+    .cta-panel {
+      display: grid;
+      gap: var(--space-6);
+      align-items: start;
+      background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary-highlight) 32%, var(--color-surface) 68%), var(--color-surface));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-6), 4vw, var(--space-10));
+      box-shadow: var(--shadow-lg);
+    }
+    .cta-panel h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+    .cta-panel p { color: var(--color-text-muted); max-width: 42rem; }
+
+    .form-shell {
+      background: color-mix(in oklab, var(--color-surface) 88%, white 12%);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-5), 3vw, var(--space-8));
+    }
+    .form-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .field-row {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .field {
+      display: grid;
+      gap: var(--space-2);
+    }
+    label {
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+    input, select, textarea {
+      width: 100%;
+      min-height: 3rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+    }
+    textarea {
+      min-height: 8rem;
+      resize: vertical;
+    }
+    input::placeholder,
+    textarea::placeholder { color: var(--color-text-faint); }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: color-mix(in oklab, var(--color-primary) 56%, var(--color-border) 44%);
+      box-shadow: 0 0 0 4px rgba(16, 58, 70, 0.1);
+    }
+    .field-error {
+      font-size: var(--text-xs);
+      color: var(--color-error);
+      min-height: 1rem;
+    }
+    .input-invalid,
+    .input-invalid:focus {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 4px rgba(143, 47, 75, 0.1);
+    }
+    .form-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--space-3);
+    }
+    .form-status {
+      min-height: 1.5rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .form-status.success { color: var(--color-success); }
+    .form-status.error { color: var(--color-error); }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+    .btn-primary[disabled] {
+      opacity: 0.7;
+      cursor: wait;
+      transform: none;
+    }
+
+    .disclaimer {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: color-mix(in oklab, var(--color-surface-2) 86%, transparent 14%);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .site-footer {
+      padding-block: var(--space-10);
+      border-top: 1px solid var(--color-border);
+      background: color-mix(in oklab, var(--color-surface) 80%, var(--color-bg) 20%);
+    }
+    .footer-grid {
+      align-items: start;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    .footer-links a {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--color-text);
+    }
+    .footer-small {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 720px) {
+      .field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stats-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .services-grid,
+      .stakes-grid,
+      .diff-grid,
+      .trust-grid,
+      .ops-grid,
+      .feedback-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .compare-board,
+      .cta-panel,
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 960px) {
+      .nav-wrap { display: flex; }
+      .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr); }
+      .panel-grid,
+      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .services-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .stakes-grid,
+      .diff-grid,
+      .trust-grid,
+      .ops-grid,
+      .feedback-grid,
+      .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .architecture-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .architecture-node::after { display: block; }
+      .architecture-node:last-child::after { display: none; }
+    }
+
+    @media (max-width: 959px) {
+      .site-header .header-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="PULSE Advisory Group home">
+        <svg class="brand-mark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PULSE Advisory Group logo">
+          <defs>
+            <linearGradient id="pulseGradient" x1="10" y1="10" x2="62" y2="62" gradientUnits="userSpaceOnUse">
+              <stop stop-color="currentColor" stop-opacity="0.95"/>
+              <stop offset="1" stop-color="currentColor" stop-opacity="0.45"/>
+            </linearGradient>
+          </defs>
+          <rect x="7" y="7" width="58" height="58" rx="18" stroke="url(#pulseGradient)" stroke-width="3.5"/>
+          <path d="M20 45.5V26.5H32.8C39.2 26.5 43 30 43 35.6C43 41.5 39.1 45.5 32.8 45.5H20Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M32 27V45" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+          <path d="M47 26V46" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M52 26V46" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">PULSE Advisory Group</span>
+          <span class="brand-sub">Failure-to-rescue and systems safety advisory</span>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#problem">Problem</a>
+          <a href="#services">Services</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#credibility">Credibility</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a class="header-cta" href="#contact">Request a triage call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Boutique. Selective. High-stakes.</span>
+          <h1>Independent systems intelligence for clinical harm, safety collapse, and product risk.</h1>
+          <p class="hero-lead">PULSE Advisory Group helps attorneys, healthcare organizations, and healthtech founders understand how failure-to-rescue, workforce harm, escalation breakdowns, and governance choices combine to produce risk. This is structured advisory work for matters that cannot be reduced to a chart review or a generic consulting package.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#contact">Request a triage call</a>
+            <a class="btn-secondary" href="#services">Review engagement options</a>
+          </div>
+          <p class="hero-note">30-minute triage call, fit-based intake, scoped proposal only when the matter warrants deeper work.</p>
+          <div class="stats-row" aria-label="Key service signals">
+            <div class="stat">
+              <strong>4</strong>
+              <span>Engagement pathways, from single-case analysis to system rescue</span>
+            </div>
+            <div class="stat">
+              <strong>20+</strong>
+              <span>Years of healthcare experience informing the analytic lens</span>
+            </div>
+            <div class="stat">
+              <strong>60–90</strong>
+              <span>Day window for the deepest systems and culture engagements</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>Primary decision on this page: request a triage call</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal" aria-label="Signal panel">
+          <div class="signal-grid">
+            <span class="eyebrow">What this site is for</span>
+            <h2>When the real problem is structural, the analysis must be structural.</h2>
+            <p>PULSE is built for matters where recognition, communication, monitoring, staffing, retaliation, product design, and governance all shape the outcome. The work is intentionally narrow in volume and high in depth.</p>
+            <div class="signal-matrix">
+              <div class="signal-card">
+                <strong>For attorneys</strong>
+                <span>Case architecture, failure-to-rescue pathways, early-phase intelligence, discovery framing, and systems-of-care analysis.</span>
+              </div>
+              <div class="signal-card">
+                <strong>For organizations</strong>
+                <span>Independent safety, culture, and rescue-performance diagnostics when internal task forces are not enough.</span>
+              </div>
+              <div class="signal-card">
+                <strong>For startups</strong>
+                <span>Clinician-led validation of workflow fit, safety assumptions, claims language, and adoption risk before scale.</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Problem</span>
+          <h2>High-stakes healthcare harm is usually framed too narrowly.</h2>
+          <p>Most post-event analysis stops at a chart, a single discipline, or an internal narrative that isolates one actor. That misses how harm is produced across staffing architecture, escalation culture, monitoring, complaint handling, governance, product design, and enforcement choices.</p>
+        </div>
+
+        <div class="compare-board reveal">
+          <div class="compare-col current">
+            <h3>Current state</h3>
+            <ul>
+              <li>Records are reviewed without reconstructing the full rescue pathway.</li>
+              <li>Internal RCA language softens systemic contributors and narrows accountability.</li>
+              <li>Clinical, workforce, and governance harms are split into separate conversations.</li>
+              <li>Healthtech products are pitched on ideal workflows rather than actual use conditions.</li>
+              <li>Decision-makers get fragmented facts instead of a coherent operating picture.</li>
+            </ul>
+          </div>
+          <div class="compare-col future">
+            <h3>Improved state</h3>
+            <ul>
+              <li>Critical moments, missed interventions, and structural drivers are mapped in sequence.</li>
+              <li>Patients, staff, leaders, counsel, and founders can see how the system behaved under strain.</li>
+              <li>Deliverables support litigation strategy, organizational learning, and product refinement.</li>
+              <li>Claims are calibrated to what is actually defensible now, not what sounds attractive.</li>
+              <li>Next steps are scoped with discipline, not guesswork.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stakes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Stakes</span>
+          <h2>What gets lost when the analysis stays shallow.</h2>
+          <p>The cost of under-analysis is not abstract. It affects case posture, patient safety, staff willingness to speak up, product adoption, board visibility, and the credibility of every subsequent decision.</p>
+        </div>
+        <div class="stakes-grid reveal">
+          <article class="card">
+            <h3>Litigation posture</h3>
+            <p>If a matter is framed as a discrete bedside error when the architecture is systemic, discovery targets narrow too early and accountability vectors remain underdeveloped.</p>
+          </article>
+          <article class="card">
+            <h3>Safety exposure</h3>
+            <p>When recognition, escalation, staffing, and monitoring breakdowns are normalized, the same conditions can continue to generate preventable harm long after a single case closes.</p>
+          </article>
+          <article class="card">
+            <h3>Workforce harm</h3>
+            <p>Suppressed escalation, retaliation, and psychological safety failure degrade rescue capacity and destabilize the very workforce expected to protect patients.</p>
+          </article>
+          <article class="card">
+            <h3>Product credibility</h3>
+            <p>Healthtech narratives built on idealized diagrams fail under real workflow pressure, especially when alarms, handoffs, documentation load, and clinical judgment are not modeled honestly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Product / service</span>
+          <h2>Four ways to engage, each built for depth rather than volume.</h2>
+          <p>PULSE is a boutique advisory practice. Engagements are selective, fixed-fee or tightly scoped where possible, and designed for clients who need serious analytic work rather than commoditized review.</p>
+        </div>
+
+        <div class="services-grid reveal">
+          <article class="service-card">
+            <div class="service-top">
+              <div>
+                <h3>Tier 1<br>Failure-to-Rescue Case Review</h3>
+              </div>
+              <span class="price">From $12,500</span>
+            </div>
+            <p class="mini-note">Remote, case-specific analysis for one high-stakes event.</p>
+            <ul>
+              <li>Record and policy review with structured interviews.</li>
+              <li>Timeline reconstruction, findings, and targeted recommendations.</li>
+              <li>Designed for attorneys, patients and families, and facilities needing a defensible systems read.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-top">
+              <div>
+                <h3>Tier 2<br>Facility Safety and Systems Snapshot</h3>
+              </div>
+              <span class="price">From $25,000</span>
+            </div>
+            <p class="mini-note">Rapid remote assessment of one facility or service line.</p>
+            <ul>
+              <li>Public data, selected policies, exemplar events, and staff interviews.</li>
+              <li>Focus on rescue risk, workforce harm, and psychological safety.</li>
+              <li>Concise diagnostic report with prioritized next moves.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-top">
+              <div>
+                <h3>Tier 3<br>Systems and Culture Rescue Engagement</h3>
+              </div>
+              <span class="price">From $120,000</span>
+            </div>
+            <p class="mini-note">Hybrid 60–90 day engagement for entrenched structural failure.</p>
+            <ul>
+              <li>Deep document and data review, interviews, and on-site observation.</li>
+              <li>Maps how workflow, culture, leadership, and technology interact.</li>
+              <li>Delivers a practical roadmap and leadership working sessions.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-top">
+              <div>
+                <h3>Startup Product Safety Validation Sprint</h3>
+              </div>
+              <span class="price">From $30,000</span>
+            </div>
+            <p class="mini-note">4–6 week sprint for health and health-adjacent products.</p>
+            <ul>
+              <li>Workflow, safety, usability, and claims-pressure test before scale.</li>
+              <li>Built for teams touching monitoring, escalation, documentation, or workforce risk.</li>
+              <li>Produces a written validation brief and strategy session.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="mini-note reveal" style="margin-top:1rem;">Published fees are starting scope indicators. Final proposals depend on record volume, interview needs, facility complexity, travel, and timeline.</p>
+      </div>
+    </section>
+
+    <section class="section" id="visuals">
+      <div class="container visual-frame">
+        <div class="section-head reveal">
+          <span class="eyebrow">Product or workflow visuals</span>
+          <h2>What a PULSE engagement produces.</h2>
+          <p>No screenshots were provided, so this page uses structural visuals instead of invented product imagery. The goal is clarity: how the work moves from intake to a usable operating picture.</p>
+        </div>
+
+        <div class="panel-grid reveal">
+          <div class="workflow-visual">
+            <h3 style="margin-bottom:1rem;">Engagement flow</h3>
+            <div class="flow-steps">
+              <div class="flow-step"><span class="step-num">1</span><div><strong>Triage</strong><span>Short intake, signal review, and a fit-based call to determine whether the matter warrants deeper work.</span></div></div>
+              <div class="flow-step"><span class="step-num">2</span><div><strong>Scope</strong><span>Clear engagement boundaries, deliverables, timeline, and fee structure before work begins.</span></div></div>
+              <div class="flow-step"><span class="step-num">3</span><div><strong>Reconstruction</strong><span>Records, policies, data, interviews, and lived-experience inputs are integrated into one analytic frame.</span></div></div>
+              <div class="flow-step"><span class="step-num">4</span><div><strong>Output</strong><span>Clients receive a written product that can orient strategy, decision-making, and follow-on action.</span></div></div>
+            </div>
+          </div>
+
+          <div class="architecture-visual">
+            <h3>Risk architecture map</h3>
+            <p class="mini-note" style="margin-top:0.35rem;">The analytic lens moves across layers rather than stopping at a single event.</p>
+            <div class="architecture-grid">
+              <div class="architecture-node"><strong>Clinical event</strong><span>Recognition, deterioration, monitoring, escalation, handoff.</span></div>
+              <div class="architecture-node"><strong>Workforce layer</strong><span>Staffing, intimidation, cognitive load, retaliation, speaking up.</span></div>
+              <div class="architecture-node"><strong>Organizational layer</strong><span>Policies, RCA scope, supervision, governance, reporting systems.</span></div>
+              <div class="architecture-node"><strong>External exposure</strong><span>Litigation, regulation, program integrity, product adoption, board risk.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>The process is intentionally selective.</h2>
+          <p>The best practice for a high-end advisory firm is not instant scheduling with payment for everyone. The first step is a triage call to determine fit, urgency, scope, conflicts, and whether your matter belongs in this kind of engagement at all.</p>
+        </div>
+
+        <div class="process-grid reveal">
+          <article class="card">
+            <h3>Triage call first</h3>
+            <p>The triage call is used to understand the matter, the timeline, the decision context, and whether a scoped engagement is appropriate. It protects both sides from rushing into a mismatched project.</p>
+            <ol>
+              <li><span class="step-num">1</span><div><strong>Submit the form</strong><p>Share the issue, your role, organization, and timing.</p></div></li>
+              <li><span class="step-num">2</span><div><strong>Rapid review</strong><p>PULSE reviews the signal for fit, urgency, and conflict concerns.</p></div></li>
+              <li><span class="step-num">3</span><div><strong>30-minute call</strong><p>The call clarifies scope boundaries, likely deliverables, and whether to proceed.</p></div></li>
+            </ol>
+          </article>
+
+          <article class="card">
+            <h3>Scoped proposal second</h3>
+            <p>Where there is fit, the next step is a written proposal. That proposal identifies the engagement type, fee structure, records or materials required, turnaround expectations, and what the final output will and will not do.</p>
+            <ol>
+              <li><span class="step-num">4</span><div><strong>Proposal</strong><p>Written scope, price, assumptions, timeline, and confidentiality posture.</p></div></li>
+              <li><span class="step-num">5</span><div><strong>Formal start</strong><p>Work begins only after scope acceptance and any required payment terms are satisfied.</p></div></li>
+              <li><span class="step-num">6</span><div><strong>Debrief</strong><p>Every engagement closes with a live review of findings and next-step options.</p></div></li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="differentiation">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Differentiation</span>
+          <h2>This is not chart review. This is not commodity legal nurse consulting.</h2>
+          <p>PULSE is built for clients who need a deeper operating picture. The value comes from systems framing, clinical credibility, workforce-risk integration, and disciplined restraint around what can and cannot be claimed.</p>
+        </div>
+
+        <div class="diff-grid reveal">
+          <article class="card">
+            <h3>Cross-layer analysis</h3>
+            <p>The work moves from bedside events to staffing architecture, reporting pathways, governance, and external exposure instead of treating each layer as unrelated.</p>
+          </article>
+          <article class="card">
+            <h3>Clinical reality first</h3>
+            <p>Recommendations are pressure-tested against actual escalation pathways, cognitive load, monitoring realities, and clinician behavior under strain.</p>
+          </article>
+          <article class="card">
+            <h3>High-trust restraint</h3>
+            <p>Unsupported claims are not added to make a page feel stronger. Where evidence is incomplete, the language stays precise about limitations and what would require confirmation.</p>
+          </article>
+          <article class="card">
+            <h3>Limited volume by design</h3>
+            <p>A boutique practice can go deeper, maintain tighter boundaries, and avoid the incentives that turn serious work into low-value throughput.</p>
+          </article>
+        </div>
+
+        <div class="quote-band reveal" style="margin-top:2rem;">
+          <span class="eyebrow">Positioning</span>
+          <blockquote>Designed for clients who need the matter understood accurately before they need it simplified.</blockquote>
+          <p class="mini-note">That posture is deliberate. It supports better legal strategy, better organizational decisions, and better product positioning than a rushed or generic review model.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="credibility">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Trust / credibility</span>
+          <h2>Trust is built through specificity, not decoration.</h2>
+          <p>This practice is new and intentionally selective. Because there are no approved testimonials, logos, or certifications to display here, trust is built through founder background, concrete methods, honest scope boundaries, and clarity about how work is performed.</p>
+        </div>
+
+        <div class="trust-grid reveal">
+          <article class="card">
+            <h3>Founder-led work</h3>
+            <ul class="cred-list">
+              <li>Jennifer Torrez, BSN, RN leads the practice.</li>
+              <li>Background includes critical care, rapid response, high-acuity crisis management, and systems-level healthcare analysis.</li>
+              <li>The analytic lens integrates patient safety, workforce harm, escalation failure, and governance exposure.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Method-backed</h3>
+            <ul class="cred-list">
+              <li>Work is grounded in structured frameworks and exemplar-style outputs rather than vague advisory language.</li>
+              <li>Deliverables can include timelines, systems findings, targeted recommendations, and strategy-oriented debriefs.</li>
+              <li>Language is calibrated to evidence status and intended use.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Current proof posture</h3>
+            <ul class="cred-list">
+              <li>The first public-facing matter was pro bono and is not used here as a performance claim.</li>
+              <li>That initial work demonstrates seriousness of approach, not a template for unsupported marketing claims.</li>
+              <li>The practice is now open for paid, high-fit engagements.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Research and public writing</h3>
+            <ul class="cred-list">
+              <li>Published and emerging thought leadership can be routed through public research repositories and direct writing channels.</li>
+              <li><a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Torrez%2C%20Jennifer%22&l=list&p=1&s=10&sort=bestmatch" target="_blank" rel="noopener noreferrer">Zenodo publications</a> and <a href="http://failuretorescue.substack.com/" target="_blank" rel="noopener noreferrer">Failure to Rescue on Substack</a> support a serious, evidence-oriented posture.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions qualified buyers tend to ask before they engage.</h2>
+          <p>These answers are designed to remove friction before the final CTA and make next steps explicit.</p>
+        </div>
+
+        <div class="faq-grid reveal">
+          <details class="faq-item">
+            <summary>Who is this for?</summary>
+            <div class="faq-answer">This practice is built for attorneys, healthcare organizations, and healthtech founders dealing with high-stakes matters where systems behavior, rescue performance, workforce harm, or product claims need to be understood with more depth than a routine review can provide.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Who is this not for?</summary>
+            <div class="faq-answer">It is not for low-budget chart review, mass-file processing, generic expert shopping, or matters where speed is valued over analytic precision. The work is selective by design.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Why not sell a paid consultation immediately on-site?</summary>
+            <div class="faq-answer">For a high-end medical-legal advisory practice, a triage-first model is better. It filters for fit, reduces scope confusion, and allows a proposal to reflect the real complexity of the matter before fees are committed.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Do you provide legal advice or replace a testifying expert?</summary>
+            <div class="faq-answer">No. PULSE provides independent advisory analysis. It does not provide legal advice and does not replace independent legal counsel or any formal expert engagement that may be required later.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Will pricing always match the ranges shown here?</summary>
+            <div class="faq-answer">Not always. The published figures are starting points based on typical scope. Record volume, interview count, facility complexity, travel, urgency, and deliverable needs can change the proposal.</div>
+          </details>
+          <details class="faq-item">
+            <summary>What happens after I submit?</summary>
+            <div class="faq-answer">Your note is reviewed for fit and urgency. If the matter appears aligned, you receive a reply with next-step questions or a scheduling option for a 30-minute triage call. If the matter is not a fit, that is better identified early than after a rushed intake.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="iteration-system">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Embedded testing and iteration system</span>
+          <h2>This page includes its own operating discipline.</h2>
+          <p>The site should improve through observed behavior, not guesswork. The review rhythm below is built into the page as an explicit operating standard for weekly iteration.</p>
+        </div>
+        <div class="ops-grid reveal">
+          <article class="card">
+            <h3>Weekly review process</h3>
+            <ul class="ops-list">
+              <li>Review form completion rate, drop-off points, CTA click patterns, and FAQ opens once per week.</li>
+              <li>Separate high-fit inquiries from low-fit inquiries to understand whether the page is attracting the right audience.</li>
+              <li>Document any repeated objections or confusion signals before changing copy.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>One change at a time</h3>
+            <ul class="ops-list">
+              <li>Change only one major variable per cycle, such as hero wording, pricing visibility, or CTA support text.</li>
+              <li>Hold the rest of the page stable long enough to interpret behavior cleanly.</li>
+              <li>Avoid stacked edits that make it impossible to identify what improved or degraded performance.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Behavior to monitor</h3>
+            <ul class="ops-list">
+              <li>Clicks from hero to form versus clicks that stall in the middle of the page.</li>
+              <li>Fields that trigger the most validation errors or abandonment.</li>
+              <li>Whether visitors who read pricing convert at a higher or lower rate than visitors who skip it.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>How to identify friction</h3>
+            <ul class="ops-list">
+              <li>If visitors reach the form but do not submit, reduce ambiguity around the next-step promise rather than adding more persuasion.</li>
+              <li>If low-fit leads dominate, tighten who the page is for and who it is not for.</li>
+              <li>If good leads ask the same clarifying question, answer it earlier in the page.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="feedback-system">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Embedded real-feedback integration system</span>
+          <h2>Observed user language should refine the message.</h2>
+          <p>Real buyers tell you how they frame their problem. That language should be captured, sorted, and used to sharpen the page without diluting the positioning.</p>
+        </div>
+        <div class="feedback-grid reveal">
+          <article class="card">
+            <h3>Capture the language</h3>
+            <ul class="feedback-list">
+              <li>Save phrasing used in inquiry descriptions, triage calls, and follow-up emails.</li>
+              <li>Note how attorneys, executives, and founders describe urgency differently.</li>
+              <li>Separate precise language from emotional language, then map both to page sections.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Refine without drifting</h3>
+            <ul class="feedback-list">
+              <li>Update wording to mirror qualified buyers more closely, but do not weaken the high-ticket posture.</li>
+              <li>Keep terminology locked once it proves credible and clear.</li>
+              <li>Do not add casual or commodity language just to increase volume.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Use objections productively</h3>
+            <ul class="feedback-list">
+              <li>Price objections can reveal positioning gaps, not only affordability gaps.</li>
+              <li>Requests for chart review or low-cost consulting confirm the value of exclusion language.</li>
+              <li>Repeated confusion about deliverables signals where the workflow visual or FAQ should become clearer.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Close the loop weekly</h3>
+            <ul class="feedback-list">
+              <li>Summarize the top three friction points and top three resonance points each week.</li>
+              <li>Decide one page edit and one outreach edit based on those findings.</li>
+              <li>Measure again before making the next change.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div>
+            <span class="eyebrow">Final CTA</span>
+            <h2>Request a triage call.</h2>
+            <p>If your matter involves high-stakes clinical harm, systems failure, workforce harm, product-safety exposure, or unresolved accountability architecture, start here. The next step is a concise intake, not a vague discovery call.</p>
+            <div class="disclaimer" style="margin-top:1rem;">
+              PULSE Advisory Group provides independent advisory analysis for medical-legal, safety, culture, and product-risk matters. Nothing on this page constitutes legal advice, a guarantee of outcome, or a substitute for independent counsel, formal expert retention, regulatory advice, or clinical care.
+            </div>
+          </div>
+
+          <div class="form-shell" aria-labelledby="contact-form-title">
+            <h3 id="contact-form-title" style="margin-bottom:1rem; font-size:var(--text-lg);">Start the intake</h3>
+            <form id="triage-form" class="form-grid" action="https://formspree.io/f/mdapdwaq" method="POST" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Full name</label>
+                  <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+                  <div class="field-error" data-error-for="name" aria-live="polite"></div>
+                </div>
+                <div class="field">
+                  <label for="email">Work email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="name@organization.com" />
+                  <div class="field-error" data-error-for="email" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="role">Role / organization type</label>
+                  <select id="role" name="role" required>
+                    <option value="">Select one</option>
+                    <option>Attorney / law firm</option>
+                    <option>Hospital / health system leader</option>
+                    <option>Facility / long-term care leader</option>
+                    <option>Healthcare founder / product team</option>
+                    <option>Union / advocacy organization</option>
+                    <option>Other relevant stakeholder</option>
+                  </select>
+                  <div class="field-error" data-error-for="role" aria-live="polite"></div>
+                </div>
+                <div class="field">
+                  <label for="organization">Organization</label>
+                  <input id="organization" name="organization" type="text" autocomplete="organization" required placeholder="Firm, facility, startup, or organization" />
+                  <div class="field-error" data-error-for="organization" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="engagement">Likely engagement type</label>
+                  <select id="engagement" name="engagement" required>
+                    <option value="">Select one</option>
+                    <option>Failure-to-Rescue Case Review</option>
+                    <option>Facility Safety and Systems Snapshot</option>
+                    <option>Systems and Culture Rescue Engagement</option>
+                    <option>Startup Product Safety Validation Sprint</option>
+                    <option>Not sure yet</option>
+                  </select>
+                  <div class="field-error" data-error-for="engagement" aria-live="polite"></div>
+                </div>
+                <div class="field">
+                  <label for="timeline">Timing</label>
+                  <select id="timeline" name="timeline" required>
+                    <option value="">Select one</option>
+                    <option>Urgent, within 7 days</option>
+                    <option>Within 30 days</option>
+                    <option>Within 60–90 days</option>
+                    <option>Exploratory, planning ahead</option>
+                  </select>
+                  <div class="field-error" data-error-for="timeline" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="details">Brief description of the matter</label>
+                <textarea id="details" name="details" required placeholder="Describe the event, facility, product, or decision context. Include what is happening, why it matters now, and what kind of help you think you need."></textarea>
+                <div class="field-error" data-error-for="details" aria-live="polite"></div>
+              </div>
+
+              <input type="hidden" name="_subject" value="PULSE Advisory Group triage inquiry" />
+              <input type="hidden" name="_replyto" value="" id="replyto-field" />
+
+              <div class="button-row">
+                <button class="btn-primary" type="submit" id="submit-button">Request a triage call</button>
+                <a class="btn-secondary" href="mailto:jen@prismqd.ai?subject=PULSE%20Advisory%20Group%20triage%20inquiry">Email directly</a>
+              </div>
+              <div class="form-meta">
+                <p class="mini-note">Expected next step: fit review, then a reply with intake follow-up or scheduling instructions for a 30-minute triage call.</p>
+                <p class="mini-note">Direct contact: <a href="mailto:jen@prismqd.ai">jen@prismqd.ai</a></p>
+              </div>
+              <div class="form-status" id="form-status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Back to top">
+          <svg class="brand-mark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="7" y="7" width="58" height="58" rx="18" stroke="currentColor" stroke-width="3.5" opacity="0.5"/>
+            <path d="M20 45.5V26.5H32.8C39.2 26.5 43 30 43 35.6C43 41.5 39.1 45.5 32.8 45.5H20Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M32 27V45" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            <path d="M47 26V46" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M52 26V46" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name">PULSE Advisory Group</span>
+            <span class="brand-sub">Independent systems intelligence for high-stakes healthcare matters</span>
+          </span>
+        </a>
+      </div>
+      <div style="display:grid; gap: 1rem; align-content:start;">
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Torrez%2C%20Jennifer%22&l=list&p=1&s=10&sort=bestmatch" target="_blank" rel="noopener noreferrer">Zenodo</a>
+          <a href="http://failuretorescue.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
+          <a href="mailto:jen@prismqd.ai">Email</a>
+        </div>
+        <p class="footer-small">© 2026 PULSE Advisory Group. Selective advisory work for attorneys, healthcare organizations, and healthtech founders. No phone number published by choice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', currentTheme);
+      const renderThemeIcon = () => {
+        if (!toggle) return;
+        const next = currentTheme === 'dark' ? 'light' : 'dark';
+        toggle.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+        toggle.innerHTML = currentTheme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+      };
+      renderThemeIcon();
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', currentTheme);
+          renderThemeIcon();
+        });
+      }
+
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      }
+
+      const form = document.getElementById('triage-form');
+      const statusEl = document.getElementById('form-status');
+      const submitButton = document.getElementById('submit-button');
+      const replytoField = document.getElementById('replyto-field');
+      let submitting = false;
+
+      const validators = {
+        name: (value) => value.trim() ? '' : 'Please enter your name.',
+        email: (value) => {
+          if (!value.trim()) return 'Please enter your email.';
+          const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+          return ok ? '' : 'Please enter a valid email address.';
+        },
+        role: (value) => value.trim() ? '' : 'Please choose your role or organization type.',
+        organization: (value) => value.trim() ? '' : 'Please enter your organization name.',
+        engagement: (value) => value.trim() ? '' : 'Please select the likely engagement type.',
+        timeline: (value) => value.trim() ? '' : 'Please select a timing window.',
+        details: (value) => value.trim().length >= 40 ? '' : 'Please provide at least a short description of the matter.'
+      };
+
+      function setFieldState(field, message) {
+        const errorEl = document.querySelector('[data-error-for="' + field.id + '"]');
+        const hasError = Boolean(message);
+        field.classList.toggle('input-invalid', hasError);
+        field.setAttribute('aria-invalid', hasError ? 'true' : 'false');
+        if (errorEl) errorEl.textContent = message || '';
+      }
+
+      function validateField(field) {
+        const validator = validators[field.id];
+        if (!validator) return true;
+        const message = validator(field.value);
+        setFieldState(field, message);
+        return !message;
+      }
+
+      Object.keys(validators).forEach((id) => {
+        const field = document.getElementById(id);
+        if (!field) return;
+        const eventName = field.tagName === 'SELECT' ? 'change' : 'blur';
+        field.addEventListener(eventName, () => validateField(field));
+        field.addEventListener('input', () => {
+          if (field.classList.contains('input-invalid')) validateField(field);
+          if (field.id === 'email') replytoField.value = field.value.trim();
+        });
+      });
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        if (submitting) return;
+
+        let firstInvalid = null;
+        let valid = true;
+        Object.keys(validators).forEach((id) => {
+          const field = document.getElementById(id);
+          if (!field) return;
+          const isFieldValid = validateField(field);
+          if (!isFieldValid && !firstInvalid) firstInvalid = field;
+          if (!isFieldValid) valid = false;
+        });
+
+        if (!valid) {
+          statusEl.textContent = 'Please correct the highlighted fields before submitting.';
+          statusEl.className = 'form-status error';
+          firstInvalid && firstInvalid.focus();
+          return;
+        }
+
+        submitting = true;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+        statusEl.textContent = 'Submitting your intake. Please wait.';
+        statusEl.className = 'form-status';
+        replytoField.value = document.getElementById('email').value.trim();
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (!response.ok) throw new Error('Submission failed');
+
+          form.reset();
+          replytoField.value = '';
+          Object.keys(validators).forEach((id) => {
+            const field = document.getElementById(id);
+            if (field) setFieldState(field, '');
+          });
+          statusEl.textContent = 'Thank you. Your intake was sent. Expect a fit review, then a reply with next-step questions or scheduling instructions for a 30-minute triage call. If your matter is time-sensitive and you do not hear back promptly, email jen@prismqd.ai directly.';
+          statusEl.className = 'form-status success';
+        } catch (error) {
+          statusEl.textContent = 'The form could not be submitted online. Please email jen@prismqd.ai with a brief description of the matter, your role, and your timing needs.';
+          statusEl.className = 'form-status error';
+        } finally {
+          submitting = false;
+          submitButton.disabled = false;
+          submitButton.textContent = 'Request a triage call';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
