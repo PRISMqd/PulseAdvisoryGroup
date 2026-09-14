@@ -1,35 +1,37 @@
 {
-  "created_utc": "2026-09-14T22:38:27.649Z",
+  "created_utc": "2026-09-14T23:47:00.000Z",
   "repository": "https://github.com/PRISMqd/PulseAdvisoryGroup",
   "base_commit": "b1c736e40a0e64f0ac7eb7779313257503476204",
   "branch": "feat/test-checkout-report-generator",
-  "test_command": "npm test",
+  "test_commands": ["npm test", "npm run test:browser"],
   "tests": {
-    "total": 6,
-    "passed": 6,
-    "failed": 0,
+    "unit_integration": {"total": 9, "passed": 9, "failed": 0},
+    "browser_viewports": [
+      {"name": "mobile", "width": 390, "height": 844, "result": "PASS", "evidence": "test-artifacts/mobile-390x844.png"},
+      {"name": "desktop", "width": 1440, "height": 1000, "result": "PASS", "evidence": "test-artifacts/desktop-1440x1000.png"}
+    ],
     "coverage": [
-      "report arithmetic",
-      "input bounds",
-      "HTML escaping",
-      "missing/live Stripe key fail-closed",
-      "fixed server-side test product and amount",
-      "paid matching test-session fulfillment",
-      "static responsive/link/secret checks"
+      "report arithmetic, input bounds, and HTML escaping",
+      "test-key and configured-origin fail-closed behavior",
+      "fixed server-side product, USD 99.00 amount, and currency",
+      "HttpOnly browser-bound fulfillment token issuance",
+      "paid/non-live/product/amount/currency/token entitlement verification",
+      "one-time atomic token consumption and replay rejection",
+      "Stripe webhook signature and timestamp verification",
+      "idempotent durable entitlement and event writes",
+      "responsive Chrome rendering at mobile and desktop viewports",
+      "static linkage and committed-secret checks"
     ]
-  },
-  "local_http": {
-    "url": "http://127.0.0.1:8765/service.html",
-    "status": 200,
-    "content_length": 10146
   },
   "payment": {
     "mode": "test-only",
     "amount_usd_cents": 9900,
+    "currency": "usd",
     "product_id": "pulse_exposure_report_v1",
     "raw_card_data_handled": false,
     "secret_committed": false,
-    "fulfillment": "server retrieves Checkout Session; requires paid, non-live, matching product metadata",
+    "fulfillment": "signed webhook plus durable entitlement; server re-verifies Stripe and atomically consumes a browser-bound token",
+    "session_id_alone_sufficient": false,
     "live_transaction_permitted": false
   },
   "report": {
@@ -40,11 +42,12 @@
   },
   "preview_deployment": {
     "status": "NOT_CREATED",
-    "reason": "Vercel deployment tool rejected upload because a separate explicit payload/access-scope confirmation was required; no workaround attempted."
+    "reason": "Vercel deployment tool rejected local-source upload pending explicit payload/access-scope authorization; no workaround attempted."
   },
   "external_blockers": [
-    "Stripe sk_test_ secret is not present.",
-    "Vercel preview upload requires explicit payload/access-scope confirmation.",
-    "PUBLIC_BASE_URL must be set to the approved preview origin before checkout can be created."
+    "Explicit Vercel local-source upload payload/access-scope authorization.",
+    "Stripe sk_test_ secret and whsec_ webhook signing secret.",
+    "Isolated preview KV_REST_API_URL and KV_REST_API_TOKEN.",
+    "PUBLIC_BASE_URL set to the approved preview origin."
   ]
 }

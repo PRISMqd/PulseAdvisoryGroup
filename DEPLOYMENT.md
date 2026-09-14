@@ -1,11 +1,20 @@
 # PULSE test checkout and report generator
 
-Run `npm test` with Node 18 or newer. A static preview exercises form validation, arithmetic, download, and responsive layout; Stripe creation and verification require the included Vercel functions.
+Run `npm run test:all` with Node 18 or newer and local Chrome, or set `CHROME_PATH` to a Chrome-compatible executable. The browser harness renders and captures the service at 390x844 and 1440x1000 under `test-artifacts/`.
 
-## Single external configuration and deployment gate
+## Preview configuration gate
 
-Import this repository into Vercel, set `STRIPE_SECRET_KEY` to a Stripe test-mode key beginning `sk_test_`, set `PUBLIC_BASE_URL` to the HTTPS preview origin, and deploy this feature branch. The API rejects absent and non-test keys, so this release cannot create a live charge. Use Stripe test card `4242 4242 4242 4242`, any future expiry, CVC, and postal code. Never commit the key or use a real card.
+Import this feature branch into Vercel and configure these encrypted environment variables:
 
-Fulfillment unlocks only after server retrieval confirms a paid, non-live Checkout Session for product `pulse_exposure_report_v1`. Before a future live launch, separately approve product and price, terms, refund and support policy, tax treatment, privacy, webhook-backed durable entitlement, production domain, and live-mode code and configuration.
+- `STRIPE_SECRET_KEY`: Stripe test secret beginning `sk_test_`.
+- `STRIPE_WEBHOOK_SECRET`: signing secret beginning `whsec_` for `https://<preview-origin>/api/stripe-webhook`.
+- `PUBLIC_BASE_URL`: exact approved HTTPS preview origin.
+- `KV_REST_API_URL` and `KV_REST_API_TOKEN`: a Vercel KV/Upstash-compatible REST store. The token requires only command access to the isolated preview database.
 
-The report accepts non-identifying organization and workforce assumptions and generates downloadable HTML plus a printable artifact. It does not accept patient records and does not establish actual or unrecognized liability, reserves, claims, covenant breach, purchase-price adjustment, actuarial loss, causation, or legal conclusions. Finance or accounting review of input definitions and intended use is required before external distribution.
+Configure Stripe test-mode events `checkout.session.completed` and `checkout.session.async_payment_succeeded` for the webhook URL. Never commit secrets, use a live key, or use a real card. For destination QA, use Stripe's test card `4242 4242 4242 4242`, any future expiry, CVC, and postal code.
+
+Checkout fixes the product, USD 99.00 amount, and currency on the server. The server issues an HttpOnly, Secure, SameSite=Lax browser cookie whose one-way hash is attached to the Checkout Session. The webhook verifies Stripe's signature within a five-minute tolerance and writes an idempotent entitlement to durable storage. Fulfillment retrieves Stripe, re-verifies paid/non-live/product/amount/currency, matches the browser token to the durable entitlement, and atomically consumes it once. A shared or replayed `session_id` does not unlock access.
+
+The report accepts non-identifying organization and workforce assumptions and generates downloadable HTML plus a printable artifact. It does not accept patient records and does not establish actual or unrecognized liability, reserves, claims, covenant breach, purchase-price adjustment, actuarial loss, causation, or legal conclusions.
+
+No preview or transaction has been run from this package because source-upload authorization and test credentials remain external gates. Before a future live launch, separately approve product and price, terms, refund/support policy, tax treatment, privacy, the production domain, and live-mode code/configuration.
