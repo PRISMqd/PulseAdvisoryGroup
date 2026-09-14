@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-14T23:50:21.8703109Z",
+  "created_utc": "2026-09-14T23:54:53.9689230Z",
   "repository": "https://github.com/PRISMqd/PulseAdvisoryGroup",
   "base_commit": "b1c736e40a0e64f0ac7eb7779313257503476204",
   "branch": "feat/test-checkout-report-generator",
@@ -32,6 +32,16 @@
     "phc_reported_rate_sensitivity": "modeledPatientCareDays * 0.029 * 24826",
     "phc_additive": false,
     "mamodule_status": "DATA NOT SUFFICIENT",
+    "numeric_mortality_output": false
+  },
+  "sample_report": {
+    "path": "sample-reports/cleveland-clinic-illustrative.html",
+    "status": "NON-INSTITUTIONAL ILLUSTRATION / NOT FOR DECISION USE",
+    "institution": "Cleveland Clinic",
+    "public_inputs": "17,591 registered-nurse enterprise headcount used strictly as an FTE proxy; 12.8% nursing turnover",
+    "scenario_assumptions": "78 vacancy days; 0.5 patients per vacancy day; USD 60,090 replacement cost; zero reported and additional amounts",
+    "denominator_matched": false,
+    "phc_additive": false,
     "numeric_mortality_output": false
   },
   "payment": {
