@@ -1,25 +1,27 @@
 {
-  "created_utc": "2026-09-14T23:47:00.000Z",
+  "created_utc": "2026-09-14T23:20:52.0195789Z",
   "repository": "https://github.com/PRISMqd/PulseAdvisoryGroup",
   "base_commit": "b1c736e40a0e64f0ac7eb7779313257503476204",
   "branch": "feat/test-checkout-report-generator",
   "test_commands": ["npm test", "npm run test:browser"],
   "tests": {
-    "unit_integration": {"total": 9, "passed": 9, "failed": 0},
+    "unit_integration": {"total": 11, "passed": 11, "failed": 0},
     "browser_viewports": [
       {"name": "mobile", "width": 390, "height": 844, "result": "PASS", "evidence": "test-artifacts/mobile-390x844.png"},
       {"name": "desktop", "width": 1440, "height": 1000, "result": "PASS", "evidence": "test-artifacts/desktop-1440x1000.png"}
     ],
     "coverage": [
-      "report arithmetic, input bounds, and HTML escaping",
+      "public arithmetic demo contains no full-report renderer or exporter",
+      "unpaid and forged-cookie full-report requests are denied",
+      "redeemed paid access generates escaped full HTML only on the server",
       "test-key and configured-origin fail-closed behavior",
       "fixed server-side product, USD 99.00 amount, and currency",
-      "HttpOnly browser-bound fulfillment token issuance",
+      "HttpOnly browser-bound fulfillment and report-access cookies",
       "paid/non-live/product/amount/currency/token entitlement verification",
-      "one-time atomic token consumption and replay rejection",
+      "atomic durable one-time redemption and replay rejection",
       "Stripe webhook signature and timestamp verification",
       "idempotent durable entitlement and event writes",
-      "responsive Chrome rendering at mobile and desktop viewports",
+      "fresh responsive Chrome rendering at mobile and desktop viewports",
       "static linkage and committed-secret checks"
     ]
   },
@@ -30,14 +32,16 @@
     "product_id": "pulse_exposure_report_v1",
     "raw_card_data_handled": false,
     "secret_committed": false,
-    "fulfillment": "signed webhook plus durable entitlement; server re-verifies Stripe and atomically consumes a browser-bound token",
+    "fulfillment": "signed webhook plus durable entitlement; server re-verifies Stripe and atomically exchanges a browser-bound one-time token for server report access",
     "session_id_alone_sufficient": false,
     "live_transaction_permitted": false
   },
   "report": {
-    "input_class": "non-identifying user assumptions",
+    "free_surface": "non-exporting arithmetic demo only",
+    "full_generation": "server-only after durable paid entitlement redemption",
     "download": "HTML",
     "printable": true,
+    "input_class": "non-identifying user assumptions",
     "actual_liability_claim": false
   },
   "preview_deployment": {
