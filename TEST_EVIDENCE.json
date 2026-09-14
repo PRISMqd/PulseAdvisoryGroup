@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-14T23:20:52.0195789Z",
+  "created_utc": "2026-09-14T23:50:21.8703109Z",
   "repository": "https://github.com/PRISMqd/PulseAdvisoryGroup",
   "base_commit": "b1c736e40a0e64f0ac7eb7779313257503476204",
   "branch": "feat/test-checkout-report-generator",
@@ -11,38 +11,37 @@
       {"name": "desktop", "width": 1440, "height": 1000, "result": "PASS", "evidence": "test-artifacts/desktop-1440x1000.png"}
     ],
     "coverage": [
-      "public arithmetic demo contains no full-report renderer or exporter",
-      "unpaid and forged-cookie full-report requests are denied",
-      "redeemed paid access generates escaped full HTML only on the server",
-      "test-key and configured-origin fail-closed behavior",
-      "fixed server-side product, USD 99.00 amount, and currency",
-      "HttpOnly browser-bound fulfillment and report-access cookies",
-      "paid/non-live/product/amount/currency/token entitlement verification",
-      "atomic durable one-time redemption and replay rejection",
-      "Stripe webhook signature and timestamp verification",
-      "idempotent durable entitlement and event writes",
-      "fresh responsive Chrome rendering at mobile and desktop viewports",
-      "static linkage and committed-secret checks"
+      "legacy workforce arithmetic unchanged",
+      "patientsPerVacancyDay bounded 0-10 with default 0.5 and denominator-matched warning",
+      "modeledPatientCareDays equals vacancyFteDays times patientsPerVacancyDay",
+      "PHC reported-rate sensitivity equals modeledPatientCareDays times 0.029 times 24826",
+      "PHC sensitivity excluded from combinedScenario and scenarioDifference",
+      "no public OIG B/C/D/E scenarios",
+      "MAModule DATA NOT SUFFICIENT with no numeric mortality output",
+      "paid server report mirrors all three layers and limitations",
+      "unpaid and forged-cookie full-report requests denied",
+      "one-time paid token redemption and replay rejection",
+      "exact Stripe amount and currency checks",
+      "fresh responsive Chrome rendering at mobile and desktop viewports"
     ]
+  },
+  "model_contract": {
+    "profile": "single institution profile",
+    "legacy_combined_scenario": "replacementScenario + additionalExposure",
+    "modeled_patient_care_days": "vacancyFteDays * patientsPerVacancyDay",
+    "phc_reported_rate_sensitivity": "modeledPatientCareDays * 0.029 * 24826",
+    "phc_additive": false,
+    "mamodule_status": "DATA NOT SUFFICIENT",
+    "numeric_mortality_output": false
   },
   "payment": {
     "mode": "test-only",
     "amount_usd_cents": 9900,
     "currency": "usd",
     "product_id": "pulse_exposure_report_v1",
-    "raw_card_data_handled": false,
     "secret_committed": false,
-    "fulfillment": "signed webhook plus durable entitlement; server re-verifies Stripe and atomically exchanges a browser-bound one-time token for server report access",
     "session_id_alone_sufficient": false,
     "live_transaction_permitted": false
-  },
-  "report": {
-    "free_surface": "non-exporting arithmetic demo only",
-    "full_generation": "server-only after durable paid entitlement redemption",
-    "download": "HTML",
-    "printable": true,
-    "input_class": "non-identifying user assumptions",
-    "actual_liability_claim": false
   },
   "preview_deployment": {
     "status": "NOT_CREATED",

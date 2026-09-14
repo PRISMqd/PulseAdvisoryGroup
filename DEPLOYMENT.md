@@ -17,4 +17,12 @@ Checkout fixes the product, USD 99.00 amount, and currency on the server. The se
 
 The report accepts non-identifying organization and workforce assumptions and generates downloadable HTML plus a printable artifact. It does not accept patient records and does not establish actual or unrecognized liability, reserves, claims, covenant breach, purchase-price adjustment, actuarial loss, causation, or legal conclusions.
 
+## Unified workforce-exposure profile
+
+The customer enters one profile. Existing workforce arithmetic is unchanged. `modeledPatientCareDays = vacancyFteDays * patientsPerVacancyDay`, where patients per vacancy day is bounded 0-10 and defaults to 0.5. The institution must supply a denominator-matched patient-volume basis.
+
+The PHC reported-rate sensitivity is `modeledPatientCareDays * 0.029 * 24826`. It is presented separately and is never added to `combinedScenario` or `scenarioDifference`. It is non-transport-validated sensitivity analysis, not observed harm, booked liability, a reserve, a claim forecast, or a decision-ready estimate.
+
+MAModule always returns `DATA NOT SUFFICIENT` and no numeric mortality output. Institution-specific denominator-matched staffing, exposure, and outcome data plus a validated causal and transport model are prerequisites for estimation.
+
 No preview or transaction has been run from this package because source-upload authorization and test credentials remain external gates. Before a future live launch, separately approve product and price, terms, refund/support policy, tax treatment, privacy, the production domain, and live-mode code/configuration.
