@@ -1,11 +1,11 @@
 {
-  "created_utc": "2026-09-14T23:54:53.9689230Z",
+  "created_utc": "2026-09-15T00:46:42.8788736Z",
   "repository": "https://github.com/PRISMqd/PulseAdvisoryGroup",
   "base_commit": "b1c736e40a0e64f0ac7eb7779313257503476204",
   "branch": "feat/test-checkout-report-generator",
   "test_commands": ["npm test", "npm run test:browser"],
   "tests": {
-    "unit_integration": {"total": 11, "passed": 11, "failed": 0},
+    "unit_integration": {"total": 13, "passed": 13, "failed": 0},
     "browser_viewports": [
       {"name": "mobile", "width": 390, "height": 844, "result": "PASS", "evidence": "test-artifacts/mobile-390x844.png"},
       {"name": "desktop", "width": 1440, "height": 1000, "result": "PASS", "evidence": "test-artifacts/desktop-1440x1000.png"}
@@ -22,7 +22,16 @@
       "unpaid and forged-cookie full-report requests denied",
       "one-time paid token redemption and replay rejection",
       "exact Stripe amount and currency checks",
-      "fresh responsive Chrome rendering at mobile and desktop viewports"
+      "fresh responsive Chrome rendering at mobile and desktop viewports",
+      "no public human-consulting price on the landing page",
+      "bounded enumerated decision context, data scope, and FTE basis",
+      "key question capped at 500 characters and source notes capped at 2,000 characters",
+      "all user text escaped in generated HTML",
+      "exact one-driver-at-a-time turnover, replacement-cost, and patient-care-day sensitivities",
+      "zero reported amount suppresses comparison and gap interpretation",
+      "decision-context-specific implications",
+      "full report includes all fourteen required analytical sections and official IFRS and GAO references",
+      "Cleveland Clinic illustration mirrors every substantive report section"
     ]
   },
   "model_contract": {
@@ -34,6 +43,14 @@
     "mamodule_status": "DATA NOT SUFFICIENT",
     "numeric_mortality_output": false
   },
+  "report_v2": {
+    "new_profile_fields": ["decisionContext", "dataScope", "fteBasis", "keyQuestion", "sourceNotes"],
+    "free_preview": "executive arithmetic and one-driver-at-a-time sensitivities; no renderer or export",
+    "paid_generation": "server-only after existing durable paid entitlement",
+    "reported_amount_zero_behavior": "not supplied; no difference or gap interpretation",
+    "external_quality_alignment": "IFRS qualitative characteristics and GAO-09-3SP traceability/sensitivity guidance; no compliance claim",
+    "human_advisory_public_price": false
+  },
   "sample_report": {
     "path": "sample-reports/cleveland-clinic-illustrative.html",
     "status": "NON-INSTITUTIONAL ILLUSTRATION / NOT FOR DECISION USE",
@@ -42,7 +59,12 @@
     "scenario_assumptions": "78 vacancy days; 0.5 patients per vacancy day; USD 60,090 replacement cost; zero reported and additional amounts",
     "denominator_matched": false,
     "phc_additive": false,
-    "numeric_mortality_output": false
+    "numeric_mortality_output": false,
+    "decision_context": "credit-lending",
+    "data_scope": "enterprise",
+    "fte_basis": "enterprise-headcount-proxy",
+    "reported_amount_comparison": false,
+    "substantive_sections": 14
   },
   "payment": {
     "mode": "test-only",

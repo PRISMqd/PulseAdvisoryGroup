@@ -25,4 +25,14 @@ The PHC reported-rate sensitivity is `modeledPatientCareDays * 0.029 * 24826`. I
 
 MAModule always returns `DATA NOT SUFFICIENT` and no numeric mortality output. Institution-specific denominator-matched staffing, exposure, and outcome data plus a validated causal and transport model are prerequisites for estimation.
 
+## Analytical report version 2
+
+The landing page publishes no price for human consulting or advisory work; those services are scoped only after matter-fit review. The USD 99 amount on `service.html` remains explicitly a Stripe test-mode automated-report price.
+
+The single report profile now records decision context, data scope, workforce-denominator basis, a bounded decision question, and bounded source-provenance notes. The free surface provides an executive arithmetic and driver preview but contains no report renderer or exporter. After the existing server-verified paid-entitlement flow, the server generates the full report with an executive brief, readiness rating, provenance table, workforce decomposition, exact one-driver-at-a-time sensitivities, conditional reported-amount comparison, governed PHC and MAModule sections, conclusion-evidence matrix, context-specific implications, prioritized next data, methodology, audit trail, and limitations.
+
+The report structure is informed by the IFRS Conceptual Framework qualitative characteristics and GAO-09-3SP guidance on traceable assumptions and sensitivity analysis. This is an alignment aid only; the report does not claim IFRS, GAAP, GAO, audit, assurance, actuarial, legal, or regulatory compliance.
+
+`sample-reports/cleveland-clinic-illustrative.html` mirrors the full report for the credit/lending context. It remains prominently labeled `NON-INSTITUTIONAL ILLUSTRATION / NOT FOR DECISION USE`, identifies enterprise RN headcount as an FTE proxy, distinguishes public inputs from demonstration assumptions, and suppresses a reported-amount comparison because none was supplied.
+
 No preview or transaction has been run from this package because source-upload authorization and test credentials remain external gates. Before a future live launch, separately approve product and price, terms, refund/support policy, tax treatment, privacy, the production domain, and live-mode code/configuration.
