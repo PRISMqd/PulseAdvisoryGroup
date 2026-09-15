@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-15T00:46:42.8788736Z",
+  "created_utc": "2026-09-15T00:55:33.7507363Z",
   "repository": "https://github.com/PRISMqd/PulseAdvisoryGroup",
   "base_commit": "b1c736e40a0e64f0ac7eb7779313257503476204",
   "branch": "feat/test-checkout-report-generator",
@@ -32,6 +32,12 @@
       "decision-context-specific implications",
       "full report includes all fourteen required analytical sections and official IFRS and GAO references",
       "Cleveland Clinic illustration mirrors every substantive report section"
+      ,"readiness uses observable declaration gates only and never emits Stronger"
+      ,"80-plus characters of repeated nonsense cannot improve readiness beyond Developing — unverified"
+      ,"enterprise proxy remains Limited regardless of provenance-note length"
+      ,"executive What matters now section interprets exact 1pp, USD 10,000, and 10-day sensitivities"
+      ,"stakeholder exposure map quantifies only the institution workforce scenario and leaves other stakeholders unquantified and unattributed"
+      ,"government and tax consequence marked not assessed; provenance and integrity do not establish causation"
     ]
   },
   "model_contract": {
@@ -49,7 +55,12 @@
     "paid_generation": "server-only after existing durable paid entitlement",
     "reported_amount_zero_behavior": "not supplied; no difference or gap interpretation",
     "external_quality_alignment": "IFRS qualitative characteristics and GAO-09-3SP traceability/sensitivity guidance; no compliance claim",
-    "human_advisory_public_price": false
+    "human_advisory_public_price": false,
+    "readiness_gates": ["denominator basis declared", "provenance note supplied or absent", "independent verification pending"],
+    "maximum_declared_readiness": "Developing — unverified",
+    "proxy_readiness": "Limited",
+    "semantic_note_grading": false,
+    "executive_sensitivity_interpretation": ["1 percentage-point turnover", "USD 10,000 per-departure cost", "10 vacancy days"]
   },
   "sample_report": {
     "path": "sample-reports/cleveland-clinic-illustrative.html",
@@ -64,7 +75,9 @@
     "data_scope": "enterprise",
     "fte_basis": "enterprise-headcount-proxy",
     "reported_amount_comparison": false,
-    "substantive_sections": 14
+    "substantive_sections": 15,
+    "readiness": "Limited",
+    "independent_verification": "Pending"
   },
   "payment": {
     "mode": "test-only",
