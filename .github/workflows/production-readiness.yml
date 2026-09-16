@@ -1,0 +1,142 @@
+name: PULSE production readiness
+
+on:
+  push:
+    branches:
+      - factory/production-readiness-20260916
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  non-production-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+          persist-credentials: false
+
+      - name: Verify exact candidate identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$CANDIDATE_SHA"
+          echo "PASS: exact candidate $actual"
+
+      - name: Enforce immutable workflow dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          bad = []
+          uses_re = re.compile(r'^\s*(?:-\s*)?uses:\s*([^@\s]+)@([^#\s]+)')
+          sha_re = re.compile(r'^[0-9a-f]{40}$')
+          for workflow in sorted(Path('.github/workflows').glob('*.y*ml')):
+              for lineno, line in enumerate(workflow.read_text(encoding='utf-8').splitlines(), 1):
+                  match = uses_re.match(line)
+                  if match and not sha_re.fullmatch(match.group(2)):
+                      bad.append(f'{workflow}:{lineno}: mutable action ref {match.group(1)}@{match.group(2)}')
+          if bad:
+              print('\n'.join(f'ERROR: {item}' for item in bad), file=sys.stderr)
+              raise SystemExit(1)
+          print('PASS: all external GitHub Actions use immutable commit SHAs')
+          PY
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+
+      - name: Validate dependency and runtime boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          for (const field of ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']) {
+            if (pkg[field] && Object.keys(pkg[field]).length) {
+              throw new Error(`${field} must remain empty for this dependency-free candidate`);
+            }
+          }
+          if (pkg.scripts?.test !== 'node --test tests/*.test.js') throw new Error('unexpected test command');
+          console.log('PASS: dependency-free Node runtime boundary is explicit');
+          NODE
+          find api lib assets tests -type f \( -name '*.js' -o -name '*.cjs' \) -print0 | xargs -0 -n1 node --check
+
+      - name: Enforce payment and entitlement safety invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          payment = Path('lib/payment-config.js').read_text(encoding='utf-8')
+          http = Path('lib/http-security.js').read_text(encoding='utf-8')
+          checkout = Path('api/create-checkout-session.js').read_text(encoding='utf-8')
+          status = Path('api/checkout-status.js').read_text(encoding='utf-8')
+          webhook = Path('api/stripe-webhook.js').read_text(encoding='utf-8')
+          report = Path('api/generate-report.js').read_text(encoding='utf-8')
+          vercel = json.loads(Path('vercel.json').read_text(encoding='utf-8'))
+
+          required = [
+              ('test-only Stripe secret', 'startsWith("sk_test_")', payment),
+              ('HTTPS public-base guard', 'u.protocol!=="https:"', payment),
+              ('fixed test-mode entitlement', 's.livemode===false', payment),
+              ('fixed payment amount', 's.amount_total===AMOUNT_TOTAL', payment),
+              ('checkout rejects non-test Stripe response', 'data.livemode!==false', checkout),
+              ('checkout requires test-session id', 'startsWith("cs_test_")', checkout),
+              ('fulfillment cookie is HttpOnly', 'HttpOnly; Secure; SameSite=Lax', http),
+              ('report cookie is strict', 'HttpOnly; Secure; SameSite=Strict', http),
+              ('status requires browser fulfillment token', 'pulse_fulfillment', status),
+              ('report requires redeemed access token', 'pulse_report_access', report),
+              ('webhook signature verification', 'timingSafeEqual', webhook),
+              ('webhook freshness window', '>300', webhook),
+              ('webhook raw-body mode', 'bodyParser:false', webhook),
+          ]
+          missing = [name for name, needle, text in required if needle not in text]
+          if missing:
+              raise SystemExit('Missing safety invariants: ' + ', '.join(missing))
+
+          api_headers = None
+          for rule in vercel.get('headers', []):
+              if rule.get('source') == '/api/(.*)':
+                  api_headers = {h.get('key','').lower(): h.get('value','') for h in rule.get('headers', [])}
+          if not api_headers or api_headers.get('cache-control') != 'no-store' or api_headers.get('x-content-type-options') != 'nosniff':
+              raise SystemExit('API no-store/nosniff headers are not enforced')
+
+          secret_pattern = re.compile(r'\b(?:sk|rk)_live_[A-Za-z0-9]{12,}\b')
+          findings = []
+          for path in list(Path('.').glob('*.html')) + list(Path('api').glob('*.js')) + list(Path('lib').glob('*.js')) + list(Path('assets').glob('*.js')):
+              text = path.read_text(encoding='utf-8', errors='ignore')
+              if secret_pattern.search(text):
+                  findings.append(str(path))
+          if findings:
+              raise SystemExit('Potential live Stripe credential material found in: ' + ', '.join(findings))
+
+          print('PASS: test-only payment, entitlement, webhook, cookie, and API-header invariants hold')
+          PY
+
+      - name: Run deterministic service tests
+        run: npm test
+
+      - name: Run local rendered responsive smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          chrome="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$chrome"
+          CHROME_PATH="$chrome" npm run test:browser
