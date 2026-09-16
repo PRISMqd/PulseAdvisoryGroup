@@ -101,6 +101,10 @@ jobs:
               ('checkout requires test-session id', 'startsWith("cs_test_")', checkout),
               ('fulfillment cookie is HttpOnly', 'HttpOnly; Secure; SameSite=Lax', http),
               ('report cookie is strict', 'HttpOnly; Secure; SameSite=Strict', http),
+              ('browser request metadata fails closed cross-site', 'site!=="same-origin"', http),
+              ('checkout has same-origin gate', 'requireSameOrigin(req,res,origin)', checkout),
+              ('fulfillment redemption has same-origin gate', 'requireSameOrigin(req,res,origin)', status),
+              ('report generation has same-origin gate', 'requireSameOrigin(req,res,origin)', report),
               ('status requires browser fulfillment token', 'pulse_fulfillment', status),
               ('report requires redeemed access token', 'pulse_report_access', report),
               ('webhook signature verification', 'timingSafeEqual', webhook),
@@ -127,7 +131,7 @@ jobs:
           if findings:
               raise SystemExit('Potential live Stripe credential material found in: ' + ', '.join(findings))
 
-          print('PASS: test-only payment, entitlement, webhook, cookie, and API-header invariants hold')
+          print('PASS: test-only payment, entitlement, browser-origin, webhook, cookie, and API-header invariants hold')
           PY
 
       - name: Run deterministic service tests
