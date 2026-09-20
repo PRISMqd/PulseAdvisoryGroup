@@ -11,9 +11,11 @@ This record does not authorize production merge, public promotion, paid infrastr
 
 ## Current release boundary
 
-The candidate contains a server-backed revenue/report path that depends on an API-capable runtime. Static GitHub Pages is not a valid functional production destination for the API path and must not be treated as evidence that checkout, webhook, entitlement, or report-generation behavior is operational.
+The candidate contains a server-backed revenue/report path that depends on an API-capable runtime. Static GitHub Pages is not a valid functional production destination for the API path and must not be treated as evidence that checkout, webhook, entitlement, report-generation, or runtime-health behavior is operational.
 
 The candidate is intentionally restricted to Stripe test-mode sessions. Production promotion requires a separately authorized runtime with correctly scoped server-only secrets and durable entitlement storage.
+
+`/api/health` is the release-observability identity surface. It must remain non-mutating, expose only `status`, source/deployment `version`, and a runtime timestamp, inherit the shared no-store/security-header baseline, support GET and bodyless HEAD, and reject unsupported methods with `405` plus `Allow: GET, HEAD`. A source-level test is not destination proof: the hosted response must be checked against the exact candidate deployment before any readiness claim.
 
 ## Pre-promotion checklist
 
@@ -21,7 +23,10 @@ Before any production authorization is requested, all of the following must be g
 
 - [ ] Locked dependency install and production dependency/security audit.
 - [ ] Syntax/type/static validation applicable to the repository.
-- [ ] Deterministic service tests for checkout, status/redemption, webhook, report generation, and security boundary behavior.
+- [ ] Deterministic service tests for checkout, status/redemption, webhook, report generation, health, and security boundary behavior.
+- [ ] Exact hosted `/api/health` GET returns `200`, `status=ok`, the expected source/deployment version, a parseable runtime timestamp, and the shared no-store/security-header baseline.
+- [ ] Two successive hosted health GETs demonstrate a changing runtime timestamp rather than stale/prerendered content.
+- [ ] Hosted `/api/health` HEAD returns `200` without a response body; unsupported POST returns `405` with `Allow: GET, HEAD`.
 - [ ] Same-origin success path validated on an already-authorized API-capable protected non-production destination.
 - [ ] Cross-site and missing-provenance browser requests rejected before external work.
 - [ ] Stripe test-mode checkout verified; production/livemode credentials and sessions rejected.
@@ -54,18 +59,18 @@ Rollback or immediate promotion halt is required for any of the following:
 - report access is granted without a matching durable entitlement and one-time redemption record;
 - secrets, cookies, fulfillment tokens, report-access tokens, or sensitive payment metadata appear in client assets or logs;
 - deployment identity does not match the approved/tested source SHA;
-- protected runtime health or critical-path verification fails after promotion;
+- protected runtime health fails, reports the wrong version, becomes cache-stale, or violates the GET/HEAD/405 contract;
 - durable storage is unavailable or behaves inconsistently with the validated release contract.
 
 ## Recovery procedure after a future explicitly authorized promotion
 
 1. Record the production branch SHA, deployment identifier, and environment/configuration version immediately before promotion.
 2. Promote only the exact tested SHA through the normal deployment path; never force-update shared production history.
-3. Run post-promotion synthetic health and critical-path checks before accepting live traffic or enabling live payment credentials.
+3. Run post-promotion synthetic health and critical-path checks before accepting live traffic or enabling live payment credentials; the health version must match the promoted source/deployment identity and successive timestamps must change.
 4. If a rollback trigger occurs, disable or keep disabled any live-payment enablement first when that can be done reversibly without deleting credentials or data.
 5. Revert the promotion commit or redeploy the recorded known-good source revision through the normal deployment mechanism. Do not force-push `main`.
 6. Do not delete entitlement, replay-protection, or report-access records during rollback. Preserve the durable store unless a separately tested data-recovery procedure explicitly requires otherwise.
-7. Re-run health, same-origin rejection, webhook-signature, replay, entitlement, report-access, and secret-non-disclosure checks against the restored revision.
+7. Re-run health GET/HEAD/405/version/timestamp/header checks, same-origin rejection, webhook-signature, replay, entitlement, report-access, and secret-non-disclosure checks against the restored revision.
 8. Record the restored deployment identity and verification evidence in the canonical portfolio/deployment register.
 9. If the incident involved a secret, token, or external credential, rotate/revoke only under the credential owner's authorization and record the resulting configuration version without storing the secret value.
 
