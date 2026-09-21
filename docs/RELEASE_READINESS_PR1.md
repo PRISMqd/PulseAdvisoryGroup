@@ -21,7 +21,7 @@ The candidate is intentionally restricted to Stripe test-mode sessions. Producti
 
 Before any production authorization is requested, all of the following must be green on the exact candidate SHA:
 
-- [ ] Locked dependency install and production dependency/security audit.
+- [x] Locked dependency install and production dependency/security audit.
 - [ ] Syntax/type/static validation applicable to the repository.
 - [ ] Deterministic service tests for checkout, status/redemption, webhook, report generation, health, and security boundary behavior.
 - [ ] Exact hosted `/api/health` GET returns `200`, `status=ok`, the expected source/deployment version, a parseable runtime timestamp, and the shared no-store/security-header baseline.
