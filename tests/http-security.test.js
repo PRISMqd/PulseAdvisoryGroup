@@ -1,7 +1,7 @@
 "use strict";
 const test=require("node:test");
 const assert=require("node:assert/strict");
-const {send}=require("../lib/http-security");
+const {send,cookies,rawBody}=require("../lib/http-security");
 
 function response(){
   return{
@@ -36,4 +36,25 @@ test("callers can still attach operational headers without weakening the securit
   assert.equal(res.headers["Cache-Control"],"no-store");
   assert.equal(res.headers["Strict-Transport-Security"],"max-age=31536000; includeSubDomains");
   assert.equal(res.headers["X-Frame-Options"],"DENY");
+});
+
+test("cookie parsing skips malformed percent-encoding instead of aborting the request",()=>{
+  const parsed=cookies({headers:{cookie:"good=value; broken=%E0%A4%A; token=a%3Db; ignored"}});
+  assert.equal(parsed.good,"value");
+  assert.equal(parsed.token,"a=b");
+  assert.equal(parsed.broken,undefined);
+});
+
+test("rawBody enforces the byte limit for framework-buffered bodies",async()=>{
+  await assert.rejects(()=>rawBody({body:Buffer.alloc(9)},8),/Request body is too large\./);
+  assert.equal((await rawBody({body:Buffer.alloc(8)},8)).length,8);
+});
+
+test("rawBody enforces the byte limit for framework-provided strings",async()=>{
+  await assert.rejects(()=>rawBody({body:"éé"},3),/Request body is too large\./);
+  assert.equal((await rawBody({body:"éé"},4)).length,4);
+});
+
+test("rawBody rejects invalid byte-limit configuration",async()=>{
+  await assert.rejects(()=>rawBody({body:"x"},-1),/Request body limit is invalid\./);
 });
