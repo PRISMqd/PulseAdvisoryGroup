@@ -58,20 +58,28 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Validate dependency and runtime boundary
+      - name: Validate locked dependency, audit, and runtime boundary
         shell: bash
         run: |
           set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm audit --omit=dev --audit-level=high
           node <<'NODE'
           const fs = require('node:fs');
           const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
           for (const field of ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']) {
             if (pkg[field] && Object.keys(pkg[field]).length) {
               throw new Error(`${field} must remain empty for this dependency-free candidate`);
             }
           }
+          if (lock.lockfileVersion !== 3) throw new Error('package-lock.json must use lockfileVersion 3');
+          const lockPackages = Object.keys(lock.packages || {});
+          if (lockPackages.length !== 1 || lockPackages[0] !== '') {
+            throw new Error('package-lock.json must contain only the dependency-free root package');
+          }
           if (pkg.scripts?.test !== 'node --test tests/*.test.js') throw new Error('unexpected test command');
-          console.log('PASS: dependency-free Node runtime boundary is explicit');
+          console.log('PASS: locked dependency-free Node runtime boundary is explicit and audited');
           NODE
           find api lib assets tests -type f \( -name '*.js' -o -name '*.cjs' \) -print0 | xargs -0 -n1 node --check
 
