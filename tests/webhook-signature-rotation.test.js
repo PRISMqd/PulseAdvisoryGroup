@@ -1,0 +1,7 @@
+"use strict";
+const test=require("node:test"),assert=require("node:assert/strict"),crypto=require("node:crypto"),webhook=require("../api/stripe-webhook");
+function signature(payload,secret,timestamp){return crypto.createHmac("sha256",secret).update(`${timestamp}.`).update(payload).digest("hex")}
+const payload=Buffer.from('{"id":"evt_test_rotation"}'),secret="whsec_rotation_test",now=1800000000,valid=signature(payload,secret,now),invalid="0".repeat(64);
+test("Stripe secret-roll headers accept any matching v1 signature",()=>{assert.equal(webhook.verifySignature(payload,`t=${now},v1=${valid},v1=${invalid}`,secret,now),true);assert.equal(webhook.verifySignature(payload,`t=${now},v1=${invalid},v1=${valid}`,secret,now),true)});
+test("signature parsing tolerates header whitespace without weakening verification",()=>{assert.equal(webhook.verifySignature(payload,` t=${now} , v1=${invalid} , v1=${valid} `,secret,now),true);assert.equal(webhook.verifySignature(payload,`t=${now},v1=${invalid},v1=${invalid}`,secret,now),false)});
+test("ambiguous timestamps and stale signatures fail closed",()=>{assert.equal(webhook.verifySignature(payload,`t=${now},t=${now},v1=${valid}`,secret,now),false);assert.equal(webhook.verifySignature(payload,`t=${now-301},v1=${signature(payload,secret,now-301)}`,secret,now),false);assert.equal(webhook.verifySignature(payload,`t=${now},v1=${valid}`,"not-a-webhook-secret",now),false)});
